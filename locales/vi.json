@@ -225,7 +225,7 @@
       "noSpecificDetails": "Không có chi tiết cụ thể cho chương này. Hãy sáng tạo dựa trên bối cảnh tổng thể.",
       "nothingHappened": "Chưa có gì xảy ra.",
       "summaryTitle": "**Tóm tắt",
-      "onlyResult": "Chỉ trả lời kết quả, không trả lời các phần không cần thiết, tuyệt đối không cần các đoạn trả lời như Tuyệt vời, Dưới đây là nội dung ...."
+      "onlyResult": "Chỉ trả lời kết quả, Không lặp lại câu vừa kể, không trả lời các phần không cần thiết, tuyệt đối không cần các đoạn trả lời như Tuyệt vời, Dưới đây là nội dung ...."
     }
   },
   "models": {
