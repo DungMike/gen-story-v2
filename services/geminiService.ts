@@ -7,7 +7,6 @@ import { MODELS } from '@/constant/model-ai';
 if (!process.env.GEMINI_API_KEY) {
   throw new Error("API_KEY environment variable not set");
 }
-console.log("🚀 ~ process.env.GEMINI_API_KEY:", process.env.GEMINI_API_KEY)
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 const modelName = MODELS.GEMINI_2_5_PRO;
 

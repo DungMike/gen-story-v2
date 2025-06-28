@@ -234,6 +234,42 @@
     "gemini-2.5-flash-preview-04-17": "Gemini 2.5 Flash Preview (Experimental)",
     "gemini-2.5-flash-lite-preview-06-17": "Gemini 2.5 Flash Lite (Fastest)"
   },
+  "tts": {
+    "title": "Convert to Voice",
+    "description": "Convert story text to audio files",
+    "generateVoice": "Generate Voice",
+    "generatingVoice": "Generating voice...",
+    "processing": "Processing chunk {{current}}/{{total}}",
+    "currentChunk": "Processing: {{chunk}}",
+    "completed": "Voice generation completed!",
+    "error": {
+      "noContent": "No content to convert",
+      "conversionFailed": "Voice conversion failed"
+    },
+    "downloadFiles": "Download Audio Files",
+    "noStoryToConvert": "No story to convert",
+    "processingStatus": {
+      "processing": "Processing...",
+      "completed": "Completed",
+      "error": "Error"
+    },
+    "navigation": {
+      "backToHome": "Back to Home"
+    },
+    "storyPreview": "Story Preview",
+    "wordCount": "Word count",
+    "andMore": "and {{count}} more characters",
+    "converting": "Converting...",
+    "startConversion": "Start Conversion",
+    "audioFiles": "Audio Files",
+    "downloadAll": "Download All",
+    "chunk": "Chunk",
+    "audioNotSupported": "Your browser does not support the audio element.",
+    "progress": {
+      "starting": "Starting conversion...",
+      "completed": "Conversion completed!"
+    }
+  },
   "ui": {
     "languageSelector": "Language",
     "loading": "Loading...",

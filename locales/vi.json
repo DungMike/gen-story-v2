@@ -234,6 +234,42 @@
     "gemini-2.5-flash-preview-04-17": "Gemini 2.5 Flash Preview (Thử nghiệm)",
     "gemini-2.5-flash-lite-preview-06-17": "Gemini 2.5 Flash Lite (Nhanh nhất)"
   },
+  "tts": {
+    "title": "Chuyển đổi thành giọng nói",
+    "description": "Chuyển văn bản truyện thành file âm thanh",
+    "generateVoice": "Tạo giọng đọc",
+    "generatingVoice": "Đang tạo giọng đọc...",
+    "processing": "Đang xử lý đoạn {{current}}/{{total}}",
+    "currentChunk": "Đang xử lý: {{chunk}}",
+    "completed": "Hoàn thành tạo giọng đọc!",
+    "error": {
+      "noContent": "Không có nội dung để chuyển đổi",
+      "conversionFailed": "Chuyển đổi giọng nói thất bại"
+    },
+    "downloadFiles": "Tải xuống file âm thanh",
+    "noStoryToConvert": "Không có truyện để chuyển đổi",
+    "processingStatus": {
+      "processing": "Đang xử lý...",
+      "completed": "Hoàn thành",
+      "error": "Lỗi"
+    },
+    "navigation": {
+      "backToHome": "Về trang chủ"
+    },
+    "storyPreview": "Xem trước truyện",
+    "wordCount": "Số từ",
+    "andMore": "và {{count}} ký tự nữa",
+    "converting": "Đang chuyển đổi...",
+    "startConversion": "Bắt đầu chuyển đổi",
+    "audioFiles": "File âm thanh",
+    "downloadAll": "Tải tất cả",
+    "chunk": "Đoạn",
+    "audioNotSupported": "Trình duyệt của bạn không hỗ trợ phần tử âm thanh.",
+    "progress": {
+      "starting": "Bắt đầu chuyển đổi...",
+      "completed": "Chuyển đổi hoàn thành!"
+    }
+  },
   "ui": {
     "languageSelector": "Ngôn ngữ",
     "loading": "Đang tải...",

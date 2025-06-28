@@ -18,11 +18,14 @@
     "i18next-browser-languagedetector": "^8.2.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-i18next": "^15.5.3"
+    "react-i18next": "^15.5.3",
+    "react-router-dom": "^7.6.3",
+    "wav": "^1.0.2"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
     "@types/react-dom": "^19.1.6",
+    "@types/wav": "^1.0.4",
     "@vitest/coverage-v8": "^1.6.0",
     "typescript": "~5.7.2",
     "vite": "^6.2.0",
