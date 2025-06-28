@@ -14,6 +14,7 @@ const TextToSpeech: React.FC<TextToSpeechProps> = ({ storyText, onBack }) => {
   const [progress, setProgress] = useState<TTSProgress | null>(null);
   const [audioFiles, setAudioFiles] = useState<Array<{blob: Blob, filename: string, url: string}>>([]);
   const [error, setError] = useState<string | null>(null);
+  const [selectedVoice, setSelectedVoice] = useState<string>('Kore');
 
   const handleConvertToSpeech = async () => {
     if (!storyText) {
@@ -29,7 +30,7 @@ const TextToSpeech: React.FC<TextToSpeechProps> = ({ storyText, onBack }) => {
     try {
       const files = await convertTextToSpeech(storyText, (progressData) => {
         setProgress(progressData);
-      });
+      }, selectedVoice);
       
       setAudioFiles(files);
       setProgress({
@@ -97,6 +98,29 @@ const TextToSpeech: React.FC<TextToSpeechProps> = ({ storyText, onBack }) => {
               Total words: ~{storyText.split(/\s+/).length}
             </p>
           </div>
+
+          {/* Voice Selection */}
+          {!isConverting && audioFiles.length === 0 && (
+            <div className="bg-gray-700/30 rounded-lg p-4">
+              <h3 className="text-lg font-semibold mb-3 text-purple-300">
+                {t('tts.voiceSelection.label')}
+              </h3>
+              <p className="text-gray-400 text-sm mb-4">
+                {t('tts.voiceSelection.description')}
+              </p>
+              <select
+                value={selectedVoice}
+                onChange={(e) => setSelectedVoice(e.target.value)}
+                className="w-full bg-gray-600 text-gray-100 border border-gray-500 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              >
+                {Object.entries(t('tts.voiceSelection.voices', { returnObjects: true }) as Record<string, string>).map(([key, value]) => (
+                  <option key={key} value={key}>
+                    {value}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           {/* Convert Button */}
           {!isConverting && audioFiles.length === 0 && (

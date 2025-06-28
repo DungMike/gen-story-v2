@@ -234,7 +234,7 @@
     "gemini-2.5-flash-preview-04-17": "Gemini 2.5 Flash Preview (Experimental)",
     "gemini-2.5-flash-lite-preview-06-17": "Gemini 2.5 Flash Lite (Fastest)"
   },
-  "tts": {
+    "tts": {
     "title": "Convert to Voice",
     "description": "Convert story text to audio files",
     "generateVoice": "Generate Voice",
@@ -254,7 +254,8 @@
       "error": "Error"
     },
     "navigation": {
-      "backToHome": "Back to Home"
+      "backToHome": "Back to Home",
+      "goToImage": "Generate Images"
     },
     "storyPreview": "Story Preview",
     "wordCount": "Word count",
@@ -268,6 +269,47 @@
     "progress": {
       "starting": "Starting conversion...",
       "completed": "Conversion completed!"
+    },
+    "rateLimitStatus": "TTS Rate Limit Status",
+    "requestsThisMinute": "Requests this minute",
+    "queueSize": "Queue size",
+    "queueInfo": "Requests in queue will be processed with 115-second delays to respect rate limits",
+    "processingQueue": "Processing queued requests...",
+    "voiceSelection": {
+      "label": "Select Voice",
+      "description": "Choose a voice that fits your story content",
+      "voices": {
+        "Zephyr": "Zephyr – Bright",
+        "Puck": "Puck – Upbeat",
+        "Charon": "Charon – Informative",
+        "Kore": "Kore – Corporate",
+        "Fenrir": "Fenrir – Strong",
+        "Leda": "Leda – Youthful",
+        "Orus": "Orus – Corporate",
+        "Aoede": "Aoede – Breezy",
+        "Callirrhoe": "Callirrhoe – Easy-going",
+        "Autonoe": "Autonoe – Bright",
+        "Enceladus": "Enceladus – Breathy",
+        "Iapetus": "Iapetus – Clear",
+        "Umbriel": "Umbriel – Easy-going",
+        "Algieba": "Algieba – Smooth",
+        "Despina": "Despina – Smooth",
+        "Erinome": "Erinome – Clear",
+        "Algenib": "Algenib – Gravelly",
+        "Rasalgethi": "Rasalgethi – Informative",
+        "Laomedeia": "Laomedeia – Upbeat",
+        "Achernar": "Achernar – Soft",
+        "Alnilam": "Alnilam – Confident",
+        "Schedar": "Schedar – Even",
+        "Gacrux": "Gacrux – Mature",
+        "Pulcherrima": "Pulcherrima – Transitional",
+        "Achird": "Achird – Friendly",
+        "Zubenelgenubi": "Zubenelgenubi – Casual",
+        "Vindemiatrix": "Vindemiatrix – Gentle",
+        "Sadachbia": "Sadachbia – Lively",
+        "Sadaltager": "Sadaltager – Knowledgeable",
+        "Sulafat": "Sulafat – Warm"
+      }
     }
   },
   "ui": {
@@ -286,5 +328,149 @@
     "submit": "Submit",
     "selectOrCustom": "Choose or enter custom...",
     "customInputPlaceholder": "Or enter custom content..."
+  },
+  "homepage": {
+    "hero": {
+      "title": "Transform Ideas into Captivating Stories with AI",
+      "subtitle": "Discover the power of artificial intelligence to create long stories, vivid voices, and unique illustrations in just minutes.",
+      "cta": "Start Creating Now"
+    },
+    "templates": {
+      "title": "Choose Your Story Template",
+      "subtitle": "Select a template or create your own story structure",
+      "mystery": "Mystery",
+      "romance": "Romance",
+      "scifi": "Sci-Fi",
+      "fantasy": "Fantasy",
+      "horror": "Horror",
+      "adventure": "Adventure"
+    },
+    "wordCount": {
+      "label": "Story Length",
+      "words": "words"
+    },
+    "createStory": "Create Story",
+    "features": {
+      "title": "Core Features",
+      "subtitle": "Everything you need to create amazing stories",
+      "story": {
+        "title": "Long Story Creation",
+        "description": "Create stories with thousands of words, customizable to any theme and genre."
+      },
+      "voice": {
+        "title": "Voice Conversion",
+        "description": "Transform your entire story into natural, high-quality voice that's easy to listen to and experience."
+      },
+      "image": {
+        "title": "Image Illustrations",
+        "description": "Automatically generate unique illustrations that match each scene, one image every 4 minutes of reading."
+      }
+    },
+    "footer": {
+      "copyright": "© 2024 AI Story Generator. All rights reserved."
+    }
+  },
+  "creator": {
+    "title": "AI Story Creator",
+    "description": "Configure your story parameters and generate amazing content",
+    "navigation": {
+      "backToHome": "Back to Home"
+    },
+    "template": {
+      "title": "Story Template",
+      "select": "Select Template"
+    },
+    "actions": {
+      "convertToVoice": "Convert to Voice",
+      "generateImages": "Generate Images"
+    }
+  },
+  "dashboard": {
+    "title": "Story Dashboard",
+    "description": "Manage your created stories",
+    "noStories": "No stories yet",
+    "noStoriesDesc": "Create your first story!",
+    "createFirst": "Create story now",
+    "totalStories": "Total stories",
+    "refresh": "Refresh",
+    "storiesList": "Stories List",
+    "selectToView": "Select a story to view",
+    "selectToViewDesc": "Click on a story in the list to view details",
+    "confirmDelete": "Confirm Delete",
+    "deleteWarning": "Are you sure you want to delete this story? This action cannot be undone.",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "category": "Category",
+    "createdAt": "Created At",
+    "wordCount": "Word Count",
+    "actions": {
+      "convertToVoice": "Convert to Voice",
+      "generateImages": "Generate Images",
+      "copy": "Copy"
+    }
+  },
+  "imageGen": {
+    "title": "Story Image Generator",
+    "description": "Generate illustrations for each segment of your story",
+    "navigation": {
+      "backToHome": "Back to Home",
+      "goToVoice": "Convert to Voice"
+    },
+    "downloadAll": "Download All Images",
+    "settings": {
+      "title": "Settings",
+      "wordsPerSegment": "Words per segment",
+      "totalSegments": "Total segments",
+      "masterPrompt": "Master Prompt (for consistency)",
+      "generatingMasterPrompt": "Generating master prompt...",
+      "noMasterPrompt": "No master prompt generated"
+    },
+    "segments": {
+      "title": "Segments",
+      "segment": "Segment",
+      "words": "words"
+    },
+    "content": {
+      "title": "Segment Content"
+    },
+    "summary": {
+      "title": "Content Summary",
+      "placeholder": "Enter a brief summary of this segment's content..."
+    },
+    "prompt": {
+      "title": "Image Prompt",
+      "placeholder": "Describe the scene, characters, and setting in English to generate an image...",
+      "suggest": "Suggest Prompt"
+    },
+    "generate": "Generate Image",
+    "download": "Download",
+    "preview": {
+      "title": "Image Preview",
+      "noImage": "No image generated yet"
+    },
+    "error": {
+      "promptGeneration": "Error generating prompt suggestion",
+      "imageGeneration": "Error generating image",
+      "noPrompt": "Please enter a prompt before generating an image",
+      "allImagesGenerated": "All segments already have images",
+      "noImagesToDownload": "No images available to download"
+    },
+    "autoGenerate": {
+      "title": "Auto Generate All Images",
+      "generating": "Auto generating images...",
+      "progress": "Progress",
+      "currentSegment": "Processing",
+      "waitingNext": "Waiting 5 seconds..."
+    },
+    "confirm": {
+      "title": "Confirm Auto Image Generation",
+      "subtitle": "High resource requirement",
+      "message": "You are about to generate images for {{count}} segments. This process will take time and consume API resources.",
+      "note": "Important notes:",
+      "notePoint1": "Each image takes 5-10 seconds to generate",
+      "notePoint2": "5-second delay between requests to avoid rate limits",
+      "notePoint3": "Process cannot be stopped once started",
+      "proceed": "Proceed"
+    }
   }
 } 

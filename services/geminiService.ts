@@ -36,10 +36,8 @@ export async function* generateStoryStream(formData: StoryFormData, template: St
   const t = i18n.t;
   let previousChaptersSummary = t('prompts.storyGeneration.nothingHappened');
   const totalWords = formData.wordCount || 8000; // Fallback to 8000 words if not provided
-  console.log("🚀 ~ function*generateStoryStream ~ totalWords:", totalWords)
   
   const chapterNumbers = Object.keys(template.chapters).map(num => parseInt(num)).sort((a, b) => a - b);
-  console.log("🚀 ~ function*generateStoryStream ~ chapters.length:", chapterNumbers.length)
   const wordsPerChapter = Math.floor(totalWords / chapterNumbers.length);
 
   for (const chapterNum of chapterNumbers) {

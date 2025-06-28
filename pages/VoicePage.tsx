@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { convertTextToSpeech, TTSProgress, getStoriesFromLocalStorage } from '../services/ttsService';
+import { useParams, useNavigate } from 'react-router-dom';
+import { convertTextToSpeech, TTSProgress, getStoryByIdFromLocalStorage, getTTSRateLimitStatus } from '../services/ttsService';
 import Header from '../components/Header';
-
-interface VoicePageState {
-  storyText: string;
-  storyId: string;
-}
 
 const VoicePage: React.FC = () => {
   const { t } = useTranslation();
-  const location = useLocation();
+  const { storyId } = useParams<{ storyId: string }>();
   const navigate = useNavigate();
-  const state = location.state as VoicePageState;
 
   const [storyText, setStoryText] = useState<string>('');
   const [isConverting, setIsConverting] = useState<boolean>(false);
@@ -25,22 +19,32 @@ const VoicePage: React.FC = () => {
   });
   const [audioFiles, setAudioFiles] = useState<Array<{blob: Blob, filename: string, url: string}>>([]);
   const [error, setError] = useState<string | null>(null);
+  const [rateLimitStatus, setRateLimitStatus] = useState(getTTSRateLimitStatus());
 
   useEffect(() => {
-    // Get story text from navigation state or localStorage
-    if (state?.storyText) {
-      setStoryText(state.storyText);
-    } else {
-      // Try to get from localStorage if no state passed
-      const savedStories = getStoriesFromLocalStorage();
-      if (savedStories.length > 0) {
-        setStoryText(savedStories[0].content);
+    // Get story text by ID from localStorage
+    if (storyId) {
+      const story = getStoryByIdFromLocalStorage(storyId);
+      if (story) {
+        setStoryText(story.content);
       } else {
-        // No story found, redirect to home
+        // Story not found, redirect to home
         navigate('/');
       }
+    } else {
+      // No story ID provided, redirect to home
+      navigate('/');
     }
-  }, [state, navigate]);
+  }, [storyId, navigate]);
+
+  // Update rate limit status periodically
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRateLimitStatus(getTTSRateLimitStatus());
+    }, 1000); // Update every second
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleConvertToSpeech = async () => {
     if (!storyText.trim()) {
@@ -96,12 +100,18 @@ const VoicePage: React.FC = () => {
     navigate('/');
   };
 
+  const handleGoToImage = () => {
+    if (storyId) {
+      navigate(`/image/${storyId}`);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 font-sans">
       <Header />
       <main className="container mx-auto p-4 md:p-8">
         {/* Navigation */}
-        <div className="mb-6">
+        <div className="mb-6 flex flex-wrap items-center gap-4">
           <button
             onClick={handleBackToHome}
             className="flex items-center space-x-2 px-4 py-2 rounded-lg font-medium bg-gray-700 hover:bg-gray-600 text-gray-200 hover:text-white transition-all duration-300"
@@ -110,6 +120,16 @@ const VoicePage: React.FC = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             <span>{t('tts.navigation.backToHome')}</span>
+          </button>
+          
+          <button
+            onClick={handleGoToImage}
+            className="flex items-center space-x-2 px-4 py-2 rounded-lg font-medium bg-purple-600 hover:bg-purple-700 text-white transition-all duration-300"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <span>{t('tts.navigation.goToImage')}</span>
           </button>
         </div>
 
@@ -142,6 +162,34 @@ const VoicePage: React.FC = () => {
               </div>
             </div>
           )}
+          {/* Rate Limiting Status */}
+          <div className="bg-gray-700/30 rounded-lg p-4 border border-gray-600">
+            <h3 className="text-lg font-semibold text-cyan-400 mb-3">{t('tts.rateLimitStatus', 'TTS Rate Limit Status')}</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+              <div>
+                <span className="text-gray-400">{t('tts.requestsThisMinute', 'Requests this minute')}:</span>
+                <span className={`ml-2 font-semibold ${rateLimitStatus.requestsInCurrentMinute >= rateLimitStatus.maxRequestsPerMinute ? 'text-red-400' : 'text-green-400'}`}>
+                  {rateLimitStatus.requestsInCurrentMinute}/{rateLimitStatus.maxRequestsPerMinute}
+                </span>
+              </div>
+              <div>
+                <span className="text-gray-400">{t('tts.queueSize', 'Queue size')}:</span>
+                <span className={`ml-2 font-semibold ${rateLimitStatus.queueSize > 0 ? 'text-yellow-400' : 'text-green-400'}`}>
+                  {rateLimitStatus.queueSize}
+                </span>
+              </div>
+            </div>
+            {rateLimitStatus.queueSize > 0 && (
+              <div className="mt-2 text-xs text-yellow-300">
+                ⏳ {t('tts.queueInfo', 'Requests in queue will be processed with 115-second delays to respect rate limits')}
+              </div>
+            )}
+            {rateLimitStatus.isProcessing && (
+              <div className="mt-2 text-xs text-blue-300">
+                🔄 {t('tts.processingQueue', 'Processing queued requests...')}
+              </div>
+            )}
+          </div>
 
           {/* Convert Button */}
           <div className="flex justify-center">

@@ -9,7 +9,10 @@
     "sections": {
       "coreIdea": "Ý Tưởng Cốt Lõi",
       "characterSetting": "Nhân Vật & Bối Cảnh", 
-      "structureDetails": "Cấu Trúc & Chi Tiết"
+      "structureDetails": "Cấu Trúc & Chi Tiết",
+      "characters": "Nhân Vật",
+      "setting": "Bối Cảnh",
+      "chapterDetails": "Chi Tiết Chương"
     },
     "fields": {
       "mainTopic": "Chủ đề chính",
@@ -254,7 +257,8 @@
       "error": "Lỗi"
     },
     "navigation": {
-      "backToHome": "Về trang chủ"
+      "backToHome": "Về trang chủ",
+      "goToImage": "Tạo ảnh minh họa"
     },
     "storyPreview": "Xem trước truyện",
     "wordCount": "Số từ",
@@ -268,6 +272,47 @@
     "progress": {
       "starting": "Bắt đầu chuyển đổi...",
       "completed": "Chuyển đổi hoàn thành!"
+    },
+    "rateLimitStatus": "Trạng thái giới hạn TTS",
+    "requestsThisMinute": "Requests trong phút này",
+    "queueSize": "Số lượng trong hàng đợi",
+    "queueInfo": "Các requests trong hàng đợi sẽ được xử lý với độ trễ 115 giây để tuân thủ giới hạn",
+    "processingQueue": "Đang xử lý hàng đợi...",
+    "voiceSelection": {
+      "label": "Chọn giọng đọc",
+      "description": "Lựa chọn giọng đọc phù hợp với nội dung truyện",
+      "voices": {
+        "Zephyr": "Zephyr – Sáng",
+        "Puck": "Puck – Upbeat",  
+        "Charon": "Charon – Cung cấp nhiều thông tin",
+        "Kore": "Hàn Quốc – Công ty",
+        "Fenrir": "Fenrir – Mạnh mẽ",
+        "Leda": "Leda – Trẻ trung",
+        "Orus": "Orus – Công ty",
+        "Aoede": "Aoede – Breezy",
+        "Callirrhoe": "Callirrhoe – Dễ tính",
+        "Autonoe": "Autonoe – Bright",
+        "Enceladus": "Enceladus – Breathy",
+        "Iapetus": "Iapetus – Xoá",
+        "Umbriel": "Umbriel – Dễ tính",
+        "Algieba": "Algieba – Smooth",
+        "Despina": "Despina – Smooth",
+        "Erinome": "Erinome – Xoá",
+        "Algenib": "Algenib – Sỏi đá",
+        "Rasalgethi": "Rasalgethi – Cung cấp nhiều thông tin",
+        "Laomedeia": "Laomedeia – Nhạc sôi động",
+        "Achernar": "Achernar – Mềm",
+        "Alnilam": "Alnilam – Chắc chắn",
+        "Schedar": "Schedar – Even",
+        "Gacrux": "Gacrux – Người trưởng thành",
+        "Pulcherrima": "Pulcherrima – Chuyển tiếp",
+        "Achird": "Achird – Thân thiện",
+        "Zubenelgenubi": "Zubenelgenubi – Thông thường",
+        "Vindemiatrix": "Vindemiatrix – Nhẹ nhàng",
+        "Sadachbia": "Sadachbia – Lively",
+        "Sadaltager": "Sadaltager – Có kiến thức",
+        "Sulafat": "Sulafat – Ấm áp"
+      }
     }
   },
   "ui": {
@@ -286,5 +331,149 @@
     "submit": "Gửi",
     "selectOrCustom": "Chọn hoặc nhập tùy chỉnh...",
     "customInputPlaceholder": "Hoặc nhập nội dung tùy chỉnh..."
+  },
+  "homepage": {
+    "hero": {
+      "title": "Biến Ý Tưởng Thành Truyện Kể Cuốn Hút Cùng AI",
+      "subtitle": "Khám phá sức mạnh của trí tuệ nhân tạo để tạo ra những câu chuyện dài, giọng nói sống động và hình ảnh minh họa độc đáo chỉ trong vài phút.",
+      "cta": "Bắt Đầu Sáng Tạo Ngay"
+    },
+    "templates": {
+      "title": "Chọn Template Truyện",
+      "subtitle": "Lựa chọn template có sẵn hoặc tạo cấu trúc truyện riêng của bạn",
+      "mystery": "Trinh Thám",
+      "romance": "Lãng Mạn",
+      "scifi": "Khoa Học Viễn Tưởng",
+      "fantasy": "Kỳ Ảo",
+      "horror": "Kinh Dị",
+      "adventure": "Phiêu Lưu"
+    },
+    "wordCount": {
+      "label": "Độ dài truyện",
+      "words": "từ"
+    },
+    "createStory": "Tạo Truyện",
+    "features": {
+      "title": "Tính Năng Cốt Lõi",
+      "subtitle": "Mọi thứ bạn cần để tạo ra những câu chuyện tuyệt vời",
+      "story": {
+        "title": "Tạo Truyện Dài",
+        "description": "Sáng tạo những câu chuyện dài với hàng ngàn từ, tùy chỉnh theo mọi chủ đề và thể loại."
+      },
+      "voice": {
+        "title": "Chuyển Đổi Giọng Nói",
+        "description": "Biến toàn bộ truyện của bạn thành giọng nói tự nhiên, chất lượng cao, dễ dàng nghe và trải nghiệm."
+      },
+      "image": {
+        "title": "Tạo Ảnh Minh Họa",
+        "description": "Tự động tạo bộ ảnh minh họa độc đáo, phù hợp với từng phân cảnh, cứ mỗi 4 phút đọc truyện sẽ có 1 ảnh."
+      }
+    },
+    "footer": {
+      "copyright": "© 2024 AI Story Generator. Bảo lưu mọi quyền."
+    }
+  },
+  "creator": {
+    "title": "Trình Tạo Truyện AI",
+    "description": "Cấu hình các thông số truyện và tạo nội dung tuyệt vời",
+    "navigation": {
+      "backToHome": "Về trang chủ"
+    },
+    "template": {
+      "title": "Template Truyện",
+      "select": "Chọn Template"
+    },
+    "actions": {
+      "convertToVoice": "Chuyển thành giọng nói",
+      "generateImages": "Tạo ảnh minh họa"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard Truyện",
+    "description": "Quản lý các truyện đã tạo",
+    "noStories": "Chưa có truyện nào",
+    "noStoriesDesc": "Hãy tạo truyện đầu tiên của bạn!",
+    "createFirst": "Tạo truyện ngay",
+    "totalStories": "Tổng số truyện",
+    "refresh": "Làm mới",
+    "storiesList": "Danh sách truyện",
+    "selectToView": "Chọn một truyện để xem",
+    "selectToViewDesc": "Nhấp vào một truyện trong danh sách để xem chi tiết",
+    "confirmDelete": "Xác nhận xóa",
+    "deleteWarning": "Bạn có chắc chắn muốn xóa truyện này? Hành động này không thể hoàn tác.",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "category": "Thể loại",
+    "createdAt": "Ngày tạo",
+    "wordCount": "Số từ",
+    "actions": {
+      "convertToVoice": "Chuyển thành giọng nói",
+      "generateImages": "Tạo ảnh minh họa",
+      "copy": "Sao chép"
+    }
+  },
+  "imageGen": {
+    "title": "Trình Tạo Ảnh Cho Truyện",
+    "description": "Tạo ảnh minh họa cho từng phân đoạn trong truyện của bạn",
+    "navigation": {
+      "backToHome": "Về trang chủ",
+      "goToVoice": "Chuyển thành giọng nói"
+    },
+    "downloadAll": "Tải tất cả ảnh",
+    "settings": {
+      "title": "Cài đặt",
+      "wordsPerSegment": "Số từ mỗi phân đoạn",
+      "totalSegments": "Tổng số phân đoạn",
+      "masterPrompt": "Master Prompt (để đảm bảo tính nhất quán)",
+      "generatingMasterPrompt": "Đang tạo master prompt...",
+      "noMasterPrompt": "Chưa có master prompt được tạo"
+    },
+    "segments": {
+      "title": "Các phân đoạn",
+      "segment": "Phân đoạn",
+      "words": "từ"
+    },
+    "content": {
+      "title": "Nội dung Phân đoạn"
+    },
+    "summary": {
+      "title": "Tóm tắt nội dung",
+      "placeholder": "Nhập tóm tắt ngắn gọn về nội dung phân đoạn này..."
+    },
+    "prompt": {
+      "title": "Prompt tạo ảnh",
+      "placeholder": "Mô tả chi tiết cảnh, nhân vật, bối cảnh bằng tiếng Anh để tạo ảnh...",
+      "suggest": "Gợi ý Prompt"
+    },
+    "generate": "Tạo Ảnh",
+    "download": "Tải xuống",
+    "preview": {
+      "title": "Ảnh minh họa",
+      "noImage": "Chưa có ảnh được tạo"
+    },
+    "error": {
+      "promptGeneration": "Lỗi khi tạo gợi ý prompt",
+      "imageGeneration": "Lỗi khi tạo ảnh",
+      "noPrompt": "Vui lòng nhập prompt trước khi tạo ảnh",
+      "allImagesGenerated": "Tất cả các phân đoạn đã có ảnh",
+      "noImagesToDownload": "Không có ảnh nào để tải xuống"
+    },
+    "autoGenerate": {
+      "title": "Tự động tạo tất cả ảnh",
+      "generating": "Đang tự động tạo ảnh...",
+      "progress": "Tiến độ",
+      "currentSegment": "Đang xử lý",
+      "waitingNext": "Đang chờ 5 giây..."
+    },
+    "confirm": {
+      "title": "Xác nhận tạo ảnh tự động",
+      "subtitle": "Yêu cầu tài nguyên cao",
+      "message": "Bạn sắp tạo ảnh cho {{count}} phân đoạn. Quá trình này sẽ mất thời gian và tiêu tốn tài nguyên API.",
+      "note": "Lưu ý quan trọng:",
+      "notePoint1": "Mỗi ảnh mất 5-10 giây để tạo",
+      "notePoint2": "Có độ trễ 5 giây giữa các yêu cầu để tránh rate limit",
+      "notePoint3": "Quá trình không thể dừng giữa chừng",
+      "proceed": "Tiếp tục"
+    }
   }
 } 
