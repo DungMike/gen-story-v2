@@ -1,0 +1,254 @@
+{
+  "app": {
+    "title": "AI Story Generator",
+    "subtitle": "Craft magical worlds from your ideas.",
+    "generateError": "An error occurred while generating the story. Please check your API key and try again.",
+    "yourStory": "Your Story"
+  },
+  "form": {
+    "sections": {
+      "coreIdea": "Core Idea",
+      "characterSetting": "Characters & Setting", 
+      "structureDetails": "Structure & Details"
+    },
+    "fields": {
+      "mainTopic": "Main Topic",
+      "wordCount": "Total Word Count (estimated) 12-14k",
+      "narrativeStyle": "Narrative Style",
+      "mainCharacterName": "Main Character Name",
+      "mainCharacterDesc": "Main Character Description",
+      "setting": "Setting (Location)",
+      "settingDesc": "Setting Description",
+      "storyStructure": "Choose Story Structure",
+      "aiModel": "Choose AI Model"
+    },
+    "buttons": {
+      "generate": "Generate Story",
+      "generating": "Generating story...",
+      "copyStory": "Copy Story",
+      "copied": "Copied!"
+    }
+  },
+  "templates": {
+    "crimeSpiritual": {
+      "name": "Spiritual Crime",
+      "description": "A spine-chilling story about mysterious cases related to the spiritual world.",
+      "chapters": {
+        "1": "Chapter 1: Introduction of setting and main character",
+        "2": "Chapter 2: Unexpected discovery",
+        "3": "Chapter 3: Delving into the past and hidden secrets",
+        "4": "Chapter 4: Sudden situation change",
+        "5": "Chapter 5: Story approaching climax",
+        "6": "Chapter 6: Unexpected ending and opening a new mystery"
+      },
+      "fields": {
+        "chuong1_boiduc_chinh": {
+          "label": "Main Setting",
+          "description": "Choose a setting for your story",
+          "options": [
+            "Village",
+            "Ancient Temple",
+            "Abandoned Hospital",
+            "Remote Location",
+            "Castle"
+          ]
+        },
+        "chuong1_mota_boiduc": {
+          "label": "Setting Description",
+          "placeholder": "A peaceful, quiet village, but with a heavy, ominous feeling",
+          "description": "Detailed description of the setting"
+        },
+        "chuong1_ten_nhanvat": {
+          "label": "Main Character Name",
+          "placeholder": "John, Jane, Alex, Sarah, Emma...",
+          "description": "Name of the main character in the story"
+        },
+        "chuong1_mota_nhanvat": {
+          "label": "Main Character Description",
+          "placeholder": "A talented detective, an orphaned child, a person with a mysterious past",
+          "description": "Description of the main character's personality and traits"
+        },
+        "chuong1_sukien_khoidau": {
+          "label": "Starting Event",
+          "description": "The event that starts the story",
+          "options": [
+            "Discovery of a mysterious death",
+            "A strange temple bell ringing",
+            "A person goes missing",
+            "A supernatural phenomenon"
+          ]
+        },
+        "chuong2_phathien_kyla": {
+          "label": "Discovery Details",
+          "description": "Description of the unexpected event discovered by the main character",
+          "options": [
+            "A corpse hidden in a grave",
+            "A cursed ancient artifact",
+            "A strange letter",
+            "A necklace with strange markings"
+          ]
+        },
+        "chuong2_nguoi_phathien": {
+          "label": "Person Who Discovered",
+          "description": "Who first discovered this event",
+          "options": [
+            "Main character",
+            "Sister Dieu An",
+            "Police Officer Ha",
+            "Village residents"
+          ]
+        },
+        "chuong2_camxuc": {
+          "label": "Main Character's Emotions",
+          "description": "Description of the main character's emotions upon discovering the strange occurrence",
+          "options": [
+            "Terror",
+            "Amazement",
+            "Worry",
+            "Curiosity"
+          ]
+        },
+        "chuong3_bimat_lichsu": {
+          "label": "Historical Secret",
+          "description": "Secret that the main character discovers in the past",
+          "options": [
+            "An unsolved case from 20 years ago",
+            "A strange ritual",
+            "A hidden event about a relative"
+          ]
+        },
+        "chuong3_nhanvat_quakhu": {
+          "label": "Character Related to the Past",
+          "description": "Person with special relationship or connection to the past",
+          "options": [
+            "Master Thich Chi Dinh",
+            "Mrs. Nam Chat",
+            "A person who disappeared in the past"
+          ]
+        },
+        "chuong3_manh_moi": {
+          "label": "New Clue",
+          "description": "Clue found by the main character",
+          "options": [
+            "An old photograph",
+            "A bracelet",
+            "An ancient notebook",
+            "An old tape recording"
+          ]
+        },
+        "chuong4_cai_chet": {
+          "label": "Unexpected Death",
+          "description": "Who dies to change the story",
+          "options": [
+            "A close friend",
+            "An important supporting character",
+            "A stranger"
+          ]
+        },
+        "chuong4_nghi_ngo": {
+          "label": "Suspected Person",
+          "description": "Who is suspected?",
+          "options": [
+            "Monk",
+            "Police officer",
+            "Close friend",
+            "Village residents"
+          ]
+        },
+        "chuong4_bimat_moi": {
+          "label": "Newly Discovered Mystery",
+          "description": "New detail discovered that changes the story's direction",
+          "options": [
+            "A wooden box with strange notes",
+            "A tape recording of a conversation",
+            "Evidence hidden in an object"
+          ]
+        },
+        "chuong5_su_that": {
+          "label": "The Big Truth",
+          "description": "Truth about the killer or reason behind the events",
+          "options": [
+            "The killer is the closest friend",
+            "The murder reason is related to a past incident",
+            "A mistaken spiritual ritual"
+          ]
+        },
+        "chuong5_ly_do_tra_thu": {
+          "label": "Reason for Revenge",
+          "description": "Motivation behind the act of revenge",
+          "options": [
+            "Hatred lasting many years",
+            "Family mistakes",
+            "Revenge for love"
+          ]
+        },
+        "chuong6_twist_cuoi": {
+          "label": "Final Twist",
+          "description": "Unexpected detail that changes the story direction",
+          "options": [
+            "A character thought dead appears",
+            "New evidence prevents case closure",
+            "An unexpected relationship"
+          ]
+        },
+        "chuong6_cau_hoi_mo": {
+          "label": "Open Question",
+          "description": "Question left for readers to ponder",
+          "options": [
+            "Is the killer truly dead?",
+            "Who is really pulling the strings?",
+            "Have the souls found peace?"
+          ]
+        }
+      }
+    }
+  },
+  "styles": {
+    "prompt1": "Narrative Style:\n1.\tTone of Voice:\n    o\tSerious, formal: Use standard vocabulary with investigative journalism and news reporting characteristics.\n    o\tDramatic, engaging: Begin with curiosity-inducing questions, \"spine-chilling\" details, \"no last words but leaving too many questions.\"\n    o\tObjective but emotional: Report events in detail based on evidence, while incorporating cautionary observations and reflections at the story's end.\n    o\tProfessional: Use many specialized terms from police, investigation, and forensics (e.g., \"serious crimes unit,\" \"criminal police department,\" \"scene cordoned off,\" \"autopsy,\" \"evidence,\" \"reconnaissance team,\" \"forensic techniques,\" \"forensic pathology,\" \"DNA testing,\" \"litigation,\" \"prosecution,\" \"procuratorate\").\n2.\tPacing:\n    o\tFast in opening: Quickly introduce the case, victim, and initial mysteries to immediately attract attention.\n    o\tSlow, detailed in investigation: Meticulously narrate the scene examination process, evidence collection, testimony taking, and data analysis. Each new detail is presented in an orderly, logical manner.\n    o\tBuilding climax at \"critical points\": When discovering important details (gloves, lipstick marks, contradictory camera data, appearance of twin sister).\n    o\tQuick resolution in investigation conclusion and trial: When the perpetrator is revealed, testimony is presented, and verdict is announced.\n    o\tReflective at the end: Shift to contemplation, offering lessons and messages.\n3.\tStorytelling Style:\n    o\tChronological narrative: Start from case discovery, investigation process, to trial and end with reflections.\n    o\tInterweaving events and analysis: Not just retelling events but incorporating reasoning from investigation agencies and criminal psychology experts.\n    o\tUsing many specific details: Dates, times, locations, identifying characteristics, and evidence described clearly.\n    o\tCreating surprises (plot twists): The appearance of the twin sister is a major surprise element that changes the investigation direction.\n    o\tGuiding readers/listeners through investigator's reasoning: Step by step revealing clues, eliminating suspects, until finding the real perpetrator.\n    o\tEnding with a social message: Not just a simple criminal case but also a lesson about relationships, care, and listening.\n4.\tCharacteristic Phrases:\n    o\tPhrases like: \"Hello dear viewers,\" \"recently in Hanoi,\" \"so what exactly happened,\" \"competent authorities,\" \"scene immediately cordoned off,\" \"preliminary death conclusion,\" \"investigators proceed to examine,\" \"however,\" \"this confirms,\" \"a noteworthy detail,\" \"under psychological pressure,\" \"opening a new investigation direction,\" \"small but consistent details,\" \"from here a new hypothesis is proposed,\" \"first shock,\" \"contradiction forces investigation team,\" \"officially admits guilt,\" \"according to testimony,\" \"verdict not yet announced but truth is clear,\" \"court announces,\" \"case closed... but...,\" \"nagging question.\""
+  },
+  "prompts": {
+    "storyGeneration": {
+      "masterNovelist": "You are a master novelist, specializing in writing long stories in English.",
+      "missionDescription": "Your task is to write a story chapter based on the provided structure.",
+      "storyOverview": "**Story Overview:**",
+      "theme": "**Theme:**",
+      "narrativeStyle": "**Narrative Style:**",
+      "totalLength": "**Desired Total Length:**",
+      "mainCharacter": "**Main Character:**",
+      "setting": "**Setting:**",
+      "previousChaptersSummary": "**Summary of Previous Chapters:**",
+      "currentChapterRequirements": "**Requirements for Current Chapter",
+      "writeFullContent": "Please write complete content for this chapter with approximately",
+      "writingGuidelines": "words. Don't just summarize.\nWrite in an engaging, detailed, emotionally rich manner and ensure continuity with previous chapters.",
+      "beginWriting": "Begin writing content for",
+      "detailsToFollow": "Details to closely follow for this chapter:",
+      "noSpecificDetails": "No specific details for this chapter. Please be creative based on the overall context.",
+      "nothingHappened": "Nothing has happened yet.",
+      "summaryTitle": "**Summary of",
+      "onlyResult": "Only provide the result, don't include unnecessary parts."
+    }
+  },
+  "models": {
+    "gemini-2.5-pro": "Gemini 2.5 Pro (Slow but high quality)",
+    "gemini-2.5-flash": "Gemini 2.5 Flash (Fast and balanced)",
+    "gemini-2.5-flash-preview-04-17": "Gemini 2.5 Flash Preview (Experimental)",
+    "gemini-2.5-flash-lite-preview-06-17": "Gemini 2.5 Flash Lite (Fastest)"
+  },
+  "ui": {
+    "languageSelector": "Language",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "selectOrCustom": "Choose or enter custom...",
+    "customInputPlaceholder": "Or enter custom content..."
+  }
+} 

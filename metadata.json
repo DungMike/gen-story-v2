@@ -1,0 +1,5 @@
+
+{
+  "name": "AI Story Generator",
+  "description": "An application to generate multi-chapter stories based on user-defined topics, structures, and custom details using the Gemini API."
+}
