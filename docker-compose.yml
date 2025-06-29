@@ -37,7 +37,6 @@ services:
     environment:
       - NODE_ENV=development
       - GEMINI_API_KEY=${GEMINI_API_KEY}
-      - API_KEY=${GEMINI_API_KEY}
     env_file:
       - .env
     volumes:
