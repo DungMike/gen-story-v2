@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
+  output: 'standalone',
   env: {
     GEMINI_API_KEY: process.env.GEMINI_API_KEY,
     API_KEY: process.env.GEMINI_API_KEY,
