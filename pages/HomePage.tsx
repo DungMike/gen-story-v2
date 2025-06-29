@@ -1,11 +1,13 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
+import { useRouter } from 'next/navigation';
+import { useI18n } from '@/providers/I18nProvider';
+import Header from '@/components/Header';
 
 const HomePage: React.FC = () => {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
+  const { t } = useI18n();
+  const router = useRouter();
   const [wordCount, setWordCount] = useState<number>(3000);
   const [selectedTemplate, setSelectedTemplate] = useState<string>('mystery');
 
@@ -47,7 +49,7 @@ const HomePage: React.FC = () => {
 
   const handleStartCreating = () => {
     // Navigate to story creation with selected template
-    navigate(`/template/${selectedTemplate}`);
+    router.push(`/template/${selectedTemplate}`);
   };
 
   const templates = [
@@ -167,7 +169,7 @@ const HomePage: React.FC = () => {
             
             <div className="flex justify-center">
               <button
-                onClick={() => navigate('/dashboard')}
+                onClick={() => router.push('/dashboard')}
                 className="inline-flex items-center px-6 py-3 text-base font-medium bg-gray-700 hover:bg-gray-600 text-gray-200 hover:text-white rounded-lg transition-all duration-300 border border-gray-600 hover:border-gray-500"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

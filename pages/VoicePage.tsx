@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useI18n } from '@/providers/I18nProvider';
+import { useParams, useRouter } from 'next/navigation';
 import { convertTextToSpeech, TTSProgress, getStoryByIdFromLocalStorage, getTTSRateLimitStatus } from '../services/ttsService';
 import Header from '../components/Header';
 
 const VoicePage: React.FC = () => {
-  const { t } = useTranslation();
-  const { storyId } = useParams<{ storyId: string }>();
-  const navigate = useNavigate();
+  const { t } = useI18n();
+  const params = useParams();
+  const storyId = params?.storyId as string;
+  const router = useRouter();
 
   const [storyText, setStoryText] = useState<string>('');
   const [isConverting, setIsConverting] = useState<boolean>(false);
@@ -29,13 +30,13 @@ const VoicePage: React.FC = () => {
         setStoryText(story.content);
       } else {
         // Story not found, redirect to home
-        navigate('/');
+        router.push('/');
       }
     } else {
       // No story ID provided, redirect to home
-      navigate('/');
+      router.push('/');
     }
-  }, [storyId, navigate]);
+  }, [storyId, router]);
 
   // Update rate limit status periodically
   useEffect(() => {
@@ -48,14 +49,14 @@ const VoicePage: React.FC = () => {
 
   const handleConvertToSpeech = async () => {
     if (!storyText.trim()) {
-      setError(t('tts.error.noContent'));
+      setError(t('tts.error.noContent') || 'No content to convert');
       return;
     }
 
     setIsConverting(true);
     setError(null);
     setAudioFiles([]);
-    setProgress({ current: 0, total: 0, currentChunk: t('tts.progress.starting'), status: 'processing' });
+    setProgress({ current: 0, total: 0, currentChunk: t('tts.progress.starting') || 'Starting...', status: 'processing' });
 
     try {
       const audioFiles = await convertTextToSpeech(storyText, (progressUpdate) => {
@@ -97,12 +98,12 @@ const VoicePage: React.FC = () => {
   };
 
   const handleBackToHome = () => {
-    navigate('/');
+    router.push('/');
   };
 
   const handleGoToImage = () => {
     if (storyId) {
-      navigate(`/image/${storyId}`);
+      router.push(`/image/${storyId}`);
     }
   };
 
@@ -156,7 +157,7 @@ const VoicePage: React.FC = () => {
                 <p className="text-gray-300 whitespace-pre-wrap leading-relaxed">
                   {storyText.substring(0, 500)}
                   {storyText.length > 500 && (
-                    <span className="text-gray-500">... ({t('tts.andMore', { count: storyText.length - 500 })})</span>
+                    <span className="text-gray-500">... ({t('tts.andMore') || 'and'} {storyText.length - 500} {t('tts.moreChars') || 'more characters'})</span>
                   )}
                 </p>
               </div>
@@ -164,16 +165,16 @@ const VoicePage: React.FC = () => {
           )}
           {/* Rate Limiting Status */}
           <div className="bg-gray-700/30 rounded-lg p-4 border border-gray-600">
-            <h3 className="text-lg font-semibold text-cyan-400 mb-3">{t('tts.rateLimitStatus', 'TTS Rate Limit Status')}</h3>
+            <h3 className="text-lg font-semibold text-cyan-400 mb-3">{t('tts.rateLimitStatus') || 'TTS Rate Limit Status'}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="text-gray-400">{t('tts.requestsThisMinute', 'Requests this minute')}:</span>
+                <span className="text-gray-400">{t('tts.requestsThisMinute') || 'Requests this minute'}:</span>
                 <span className={`ml-2 font-semibold ${rateLimitStatus.requestsInCurrentMinute >= rateLimitStatus.maxRequestsPerMinute ? 'text-red-400' : 'text-green-400'}`}>
                   {rateLimitStatus.requestsInCurrentMinute}/{rateLimitStatus.maxRequestsPerMinute}
                 </span>
               </div>
               <div>
-                <span className="text-gray-400">{t('tts.queueSize', 'Queue size')}:</span>
+                <span className="text-gray-400">{t('tts.queueSize') || 'Queue size'}:</span>
                 <span className={`ml-2 font-semibold ${rateLimitStatus.queueSize > 0 ? 'text-yellow-400' : 'text-green-400'}`}>
                   {rateLimitStatus.queueSize}
                 </span>
@@ -181,12 +182,12 @@ const VoicePage: React.FC = () => {
             </div>
             {rateLimitStatus.queueSize > 0 && (
               <div className="mt-2 text-xs text-yellow-300">
-                ⏳ {t('tts.queueInfo', 'Requests in queue will be processed with 115-second delays to respect rate limits')}
+                ⏳ {t('tts.queueInfo') || 'Requests in queue will be processed with 115-second delays to respect rate limits'}
               </div>
             )}
             {rateLimitStatus.isProcessing && (
               <div className="mt-2 text-xs text-blue-300">
-                🔄 {t('tts.processingQueue', 'Processing queued requests...')}
+                🔄 {t('tts.processingQueue') || 'Processing queued requests...'}
               </div>
             )}
           </div>

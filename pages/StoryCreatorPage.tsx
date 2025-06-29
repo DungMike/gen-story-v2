@@ -1,21 +1,24 @@
+'use client';
+
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useNavigate, useParams } from 'react-router-dom';
-import { StoryFormData, ChapterContent } from '../types';
-import { getStoryTemplates } from '../i18nConstants';
-import { generateStoryStream } from '../services/geminiService';
-import { saveStoryToLocalStorage, StoredStory } from '../services/ttsService';
-import { MODELS } from '../constant/model-ai';
-import Header from '../components/Header';
-import LoadingSpinner from '../components/LoadingSpinner';
-import ChapterCard from '../components/ChapterCard';
+import { useRouter, useParams } from 'next/navigation';
+import { useI18n } from '@/providers/I18nProvider';
+import { StoryFormData, ChapterContent } from '@/types';
+import { getStoryTemplates } from '@/i18nConstants';
+import { generateStoryStream } from '@/services/geminiService';
+import { saveStoryToLocalStorage, StoredStory } from '@/services/ttsService';
+import { MODELS } from '@/constant/model-ai';
+import Header from '@/components/Header';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import ChapterCard from '@/components/ChapterCard';
 
 const StoryCreatorPage: React.FC = () => {
-  const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
-  const { templateId } = useParams<{ templateId: string }>();
+  const { t, language } = useI18n();
+  const router = useRouter();
+  const params = useParams();
+  const templateId = params?.templateId as string;
   
-  const storyTemplates = useMemo(() => getStoryTemplates(), [i18n.language]);
+  const storyTemplates = useMemo(() => getStoryTemplates(), [language]);
   const [selectedTemplateId, setSelectedTemplateId] = useState<string>(templateId || storyTemplates[0]?.id || '');
   const [selectedModel, setSelectedModel] = useState<string>(MODELS.GEMINI_2_5_FLASH_001);
   
@@ -48,12 +51,12 @@ const StoryCreatorPage: React.FC = () => {
   }, [getDefaultChapterData]);
 
   const [formData, setFormData] = useState<StoryFormData>({
-    topic: i18n.language === 'vi' ? 'Án mạng tâm linh ở một thị trấn hẻo lánh' : 'Spiritual murder case in a remote town',
-    narrativeStyle: i18n.language === 'vi' ? 'Hồi hộp, kịch tính, có yếu tố trinh thám và bí ẩn' : 'Suspenseful, dramatic, with detective and mystery elements',
-    mainCharacterName: i18n.language === 'vi' ? 'Thám tử Kiên' : 'Detective Alex',
-    mainCharacterDesc: i18n.language === 'vi' ? 'một thám tử tư dày dặn kinh nghiệm nhưng hoài nghi về thế giới siêu nhiên' : 'an experienced private detective who is skeptical about the supernatural world',
-    setting: i18n.language === 'vi' ? 'Thị trấn Sương Mù' : 'Foggy Town',
-    settingDesc: i18n.language === 'vi' ? 'Một thị trấn nhỏ, hẻo lánh nằm sâu trong vùng núi cao, quanh năm bao phủ bởi sương mù dày đặc và những lời đồn đại ma quái' : 'A small, remote town deep in the high mountains, year-round covered by thick fog and haunted by ghostly rumors',
+    topic: language === 'vi' ? 'Án mạng tâm linh ở một thị trấn hẻo lánh' : 'Spiritual murder case in a remote town',
+    narrativeStyle: language === 'vi' ? 'Hồi hộp, kịch tính, có yếu tố trinh thám và bí ẩn' : 'Suspenseful, dramatic, with detective and mystery elements',
+    mainCharacterName: language === 'vi' ? 'Thám tử Kiên' : 'Detective Alex',
+    mainCharacterDesc: language === 'vi' ? 'một thám tử tư dày dặn kinh nghiệm nhưng hoài nghi về thế giới siêu nhiên' : 'an experienced private detective who is skeptical about the supernatural world',
+    setting: language === 'vi' ? 'Thị trấn Sương Mù' : 'Foggy Town',
+    settingDesc: language === 'vi' ? 'Một thị trấn nhỏ, hẻo lánh nằm sâu trong vùng núi cao, quanh năm bao phủ bởi sương mù dày đặc và những lời đồn đại ma quái' : 'A small, remote town deep in the high mountains, year-round covered by thick fog and haunted by ghostly rumors',
     chapters: initialChapterData,
     wordCount: 3000,
   });
@@ -72,7 +75,7 @@ const StoryCreatorPage: React.FC = () => {
       ...prev,
       chapters: newChapterData
     }));
-  }, [i18n.language, selectedTemplate, getDefaultChapterData]);
+  }, [language, selectedTemplate, getDefaultChapterData]);
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -119,7 +122,7 @@ const StoryCreatorPage: React.FC = () => {
     const newTemplateId = e.target.value;
     setSelectedTemplateId(newTemplateId);
     // Update URL when template changes
-    navigate(`/template/${newTemplateId}`);
+    router.push(`/template/${newTemplateId}`);
     const newTemplate = storyTemplates.find(t => t.id === newTemplateId)!;
     const newChapterData: Record<string, string> = {};
     newTemplate.fields.forEach(field => {
@@ -129,7 +132,7 @@ const StoryCreatorPage: React.FC = () => {
   };
 
   const handleBackToHome = () => {
-    navigate('/');
+    router.push('/');
   };
 
   const handleGoToVoice = () => {
@@ -137,7 +140,7 @@ const StoryCreatorPage: React.FC = () => {
       // Save story to localStorage before navigating and get the UUID
       const storyId = saveStoryToLocalStorage(generatedStory[0].content, selectedTemplate?.name);
       // Navigate to voice page with story ID as URL param
-      navigate(`/voice/${storyId}`);
+      router.push(`/voice/${storyId}`);
     }
   };
 
@@ -146,7 +149,7 @@ const StoryCreatorPage: React.FC = () => {
       // Save story to localStorage before navigating and get the UUID
       const storyId = saveStoryToLocalStorage(generatedStory[0].content, selectedTemplate?.name);
       // Navigate to image page with story ID as URL param
-      navigate(`/image/${storyId}`);
+      router.push(`/image/${storyId}`);
     }
   };
 
@@ -406,8 +409,9 @@ const StoryCreatorPage: React.FC = () => {
                 {generatedStory.map((chapter, index) => (
                   <ChapterCard 
                     key={index} 
-                    chapter={chapter} 
-                    onCopy={() => handleCopyStory}
+                    chapter={chapter}
+                    index={index}
+                    onCopy={handleCopyStory}
                     copySuccess={copySuccess}
                   />
                 ))}

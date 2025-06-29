@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useI18n } from '@/providers/I18nProvider';
 import { convertTextToSpeech, TTSProgress, downloadAllAudioFiles } from '../services/ttsService';
 import LoadingSpinner from './LoadingSpinner';
 
@@ -9,7 +9,7 @@ interface TextToSpeechProps {
 }
 
 const TextToSpeech: React.FC<TextToSpeechProps> = ({ storyText, onBack }) => {
-  const { t } = useTranslation();
+  const { t } = useI18n();
   const [isConverting, setIsConverting] = useState(false);
   const [progress, setProgress] = useState<TTSProgress | null>(null);
   const [audioFiles, setAudioFiles] = useState<Array<{blob: Blob, filename: string, url: string}>>([]);
@@ -113,11 +113,12 @@ const TextToSpeech: React.FC<TextToSpeechProps> = ({ storyText, onBack }) => {
                 onChange={(e) => setSelectedVoice(e.target.value)}
                 className="w-full bg-gray-600 text-gray-100 border border-gray-500 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               >
-                {Object.entries(t('tts.voiceSelection.voices', { returnObjects: true }) as Record<string, string>).map(([key, value]) => (
-                  <option key={key} value={key}>
-                    {value}
-                  </option>
-                ))}
+                <option value="Zephyr">Zephyr – Sáng</option>
+                <option value="Puck">Puck – Upbeat</option>
+                <option value="Charon">Charon – Cung cấp nhiều thông tin</option>
+                <option value="Kore">Hàn Quốc – Công ty</option>
+                <option value="Fenrir">Fenrir – Mạnh mẽ</option>
+                <option value="Leda">Leda – Trẻ trung</option>
               </select>
             </div>
           )}
@@ -154,7 +155,7 @@ const TextToSpeech: React.FC<TextToSpeechProps> = ({ storyText, onBack }) => {
                 </div>
                 
                 <p className="text-gray-300">
-                  {t('tts.processing', { current: progress.current, total: progress.total })}
+                  {t('tts.processing') || 'Processing'} {progress.current}/{progress.total}
                 </p>
                 <p className="text-gray-500 text-sm mt-2">
                   {progress.currentChunk}

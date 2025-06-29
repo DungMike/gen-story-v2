@@ -1,12 +1,14 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { getStoriesFromLocalStorage, deleteStoryFromLocalStorage, StoredStory } from '../services/ttsService';
-import Header from '../components/Header';
+import { useRouter } from 'next/navigation';
+import { useI18n } from '@/providers/I18nProvider';
+import { getStoriesFromLocalStorage, deleteStoryFromLocalStorage, StoredStory } from '@/services/ttsService';
+import Header from '@/components/Header';
 
 const DashboardPage: React.FC = () => {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
+  const { t } = useI18n();
+  const router = useRouter();
   const [stories, setStories] = useState<StoredStory[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedStory, setSelectedStory] = useState<StoredStory | null>(null);
@@ -44,11 +46,11 @@ const DashboardPage: React.FC = () => {
   };
 
   const handleGoToVoice = (storyId: string) => {
-    navigate(`/voice/${storyId}`);
+    router.push(`/voice/${storyId}`);
   };
 
   const handleGoToImage = (storyId: string) => {
-    navigate(`/image/${storyId}`);
+    router.push(`/image/${storyId}`);
   };
 
   const formatDate = (timestamp: string) => {
@@ -92,7 +94,7 @@ const DashboardPage: React.FC = () => {
               <p className="text-gray-400">{t('dashboard.description')}</p>
             </div>
             <button
-              onClick={() => navigate('/')}
+              onClick={() => router.push('/')}
               className="flex items-center space-x-2 px-4 py-2 rounded-lg font-medium bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -124,7 +126,7 @@ const DashboardPage: React.FC = () => {
             <h2 className="text-2xl font-bold text-gray-300 mb-2">{t('dashboard.noStories')}</h2>
             <p className="text-gray-500 mb-6">{t('dashboard.noStoriesDesc')}</p>
             <button
-              onClick={() => navigate('/')}
+              onClick={() => router.push('/')}
               className="px-6 py-3 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white font-semibold rounded-lg transition-all duration-300"
             >
               {t('dashboard.createFirst')}

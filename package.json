@@ -1,36 +1,41 @@
 {
   "name": "ai-story-generator",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@google/genai": "^1.7.0",
-    "@types/react": "^19.1.8",
     "@types/uuid": "^10.0.0",
-    "i18next": "^25.2.1",
-    "i18next-browser-languagedetector": "^8.2.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-i18next": "^15.5.3",
-    "react-router-dom": "^7.6.3",
+    "next": "14.2.18",
+    "next-i18next": "^15.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "uuid": "^11.1.0",
     "wav": "^1.0.2"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
-    "@types/react-dom": "^19.1.6",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "@types/wav": "^1.0.4",
     "@vitest/coverage-v8": "^1.6.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.18",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
     "typescript": "~5.7.2",
-    "vite": "^6.2.0",
     "vitest": "^1.6.0"
   }
 }

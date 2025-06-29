@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useI18n } from '@/providers/I18nProvider';
+import { useParams, useRouter } from 'next/navigation';
 import { getStoryByIdFromLocalStorage } from '../services/ttsService';
 import Header from '../components/Header';
 import { generateMasterPrompt, generateImagePrompt, generateImage, sanitizePromptForSafety } from '../services/generateImageService';
@@ -15,9 +15,10 @@ interface StorySegment {
 }
 
 const ImageGeneratorPage: React.FC = () => {
-  const { t, i18n } = useTranslation();
-  const { storyId } = useParams<{ storyId: string }>();
-    const navigate = useNavigate();
+  const { t } = useI18n();
+  const params = useParams();
+  const storyId = params?.storyId as string;
+  const router = useRouter();
   const [masterPrompt, setMasterPrompt] = useState<string>('');
   const [storyText, setStoryText] = useState<string>('');
   const [wordsPerSegment, setWordsPerSegment] = useState<number>(1000);
@@ -53,16 +54,16 @@ const ImageGeneratorPage: React.FC = () => {
           }
         } else {
           // Story not found, redirect to home
-          navigate('/');
+          router.push('/');
         }
       } else {
         // No story ID provided, redirect to home
-        navigate('/');
+        router.push('/');
       }
     };
 
     initializeStory();
-  }, [storyId, navigate]);
+  }, [storyId, router]);
 
   const generateSegments = (text: string, wordsPerSeg: number) => {
     const words = text.trim().split(/\s+/);
@@ -336,12 +337,12 @@ const ImageGeneratorPage: React.FC = () => {
 
   const handleGoToVoice = () => {
     if (storyId) {
-      navigate(`/voice/${storyId}`);
+      router.push(`/voice/${storyId}`);
     }
   };
 
   const handleBackToHome = () => {
-    navigate('/');
+    router.push('/');
   };
 
   return (
@@ -655,9 +656,7 @@ const ImageGeneratorPage: React.FC = () => {
               
               <div className="space-y-3 mb-6">
                 <p className="text-gray-300 text-sm">
-                  {t('imageGen.confirm.message', { 
-                    count: segments.filter((_, index) => !segments[index].imageUrl).length 
-                  })}
+                  {t('imageGen.confirm.message') || 'This will generate images for'} {segments.filter((_, index) => !segments[index].imageUrl).length} {t('imageGen.confirm.segments') || 'segments'}.
                 </p>
                 
                 <div className="bg-gray-700/50 rounded-lg p-3 text-xs text-gray-400">

@@ -3,7 +3,9 @@
     "title": "Trình tạo truyện AI",
     "subtitle": "Kiến tạo những thế giới kỳ ảo từ ý tưởng của bạn.",
     "generateError": "Đã xảy ra lỗi khi tạo truyện. Vui lòng kiểm tra API key và thử lại.",
-    "yourStory": "Câu chuyện của bạn"
+    "yourStory": "Câu chuyện của bạn",
+    "generating": "Đang tạo truyện...",
+    "generateStory": "Tạo Truyện"
   },
   "form": {
     "sections": {
@@ -12,7 +14,8 @@
       "structureDetails": "Cấu Trúc & Chi Tiết",
       "characters": "Nhân Vật",
       "setting": "Bối Cảnh",
-      "chapterDetails": "Chi Tiết Chương"
+      "chapterDetails": "Chi Tiết Chương",
+      "model": "Mô Hình AI"
     },
     "fields": {
       "mainTopic": "Chủ đề chính",
@@ -23,7 +26,8 @@
       "setting": "Bối cảnh (Địa điểm)",
       "settingDesc": "Mô tả bối cảnh",
       "storyStructure": "Chọn cấu trúc truyện",
-      "aiModel": "Chọn mô hình AI"
+      "aiModel": "Chọn mô hình AI",
+      "model": "Chọn mô hình AI"
     },
     "buttons": {
       "generate": "Tạo Truyện",

@@ -1,33 +1,48 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
+// Simple i18n utility for non-React files
+import { translations } from './lib/i18n';
 
-// Translation files
-import en from './locales/en.json';
-import vi from './locales/vi.json';
+type Language = 'en' | 'vi';
 
-i18n
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    resources: {
-      en: {
-        translation: en
-      },
-      vi: {
-        translation: vi
+class SimpleI18n {
+  private currentLanguage: Language = 'vi';
+
+  constructor() {
+    // Try to get language from localStorage if available
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('language') as Language;
+      if (saved && (saved === 'en' || saved === 'vi')) {
+        this.currentLanguage = saved;
       }
-    },
-    fallbackLng: 'vi', // Default to Vietnamese
-    lng: 'vi', // Start with Vietnamese
-    debug: false,
-    interpolation: {
-      escapeValue: false
-    },
-    detection: {
-      order: ['localStorage', 'navigator', 'htmlTag'],
-      caches: ['localStorage']
     }
-  });
+  }
+
+  t = (key: string, options?: { returnObjects?: boolean }): any => {
+    const keys = key.split('.');
+    let value: any = translations[this.currentLanguage];
+    
+    for (const k of keys) {
+      value = value?.[k];
+    }
+    
+    if (options?.returnObjects && Array.isArray(value)) {
+      return value;
+    }
+    
+    return value || key;
+  };
+
+  changeLanguage = (lng: Language) => {
+    this.currentLanguage = lng;
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('language', lng);
+    }
+  };
+
+  get language() {
+    return this.currentLanguage;
+  }
+}
+
+const i18n = new SimpleI18n();
 
 export default i18n; 

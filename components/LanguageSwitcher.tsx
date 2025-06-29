@@ -1,39 +1,30 @@
+'use client';
+
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useI18n } from '@/providers/I18nProvider';
 
 const LanguageSwitcher: React.FC = () => {
-  const { i18n, t } = useTranslation();
+  const { language, setLanguage } = useI18n();
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
+  const toggleLanguage = () => {
+    setLanguage(language === 'vi' ? 'en' : 'vi');
   };
 
   return (
-    <div className="flex items-center space-x-2">
-      <span className="text-sm text-gray-300">{t('ui.languageSelector')}:</span>
-      <div className="flex space-x-1">
-        <button
-          onClick={() => changeLanguage('vi')}
-          className={`px-3 py-1 text-sm rounded transition-colors ${
-            i18n.language === 'vi'
-              ? 'bg-cyan-500 text-white'
-              : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-          }`}
-        >
-          VI
-        </button>
-        <button
-          onClick={() => changeLanguage('en')}
-          className={`px-3 py-1 text-sm rounded transition-colors ${
-            i18n.language === 'en'
-              ? 'bg-cyan-500 text-white'
-              : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-          }`}
-        >
-          EN
-        </button>
-      </div>
-    </div>
+    <button
+      onClick={toggleLanguage}
+      className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all duration-300 border border-gray-600 hover:border-gray-500"
+    >
+      <span className="text-sm font-medium">
+        {language === 'vi' ? '🇻🇳' : '🇺🇸'}
+      </span>
+      <span className="text-sm font-medium uppercase">
+        {language}
+      </span>
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+      </svg>
+    </button>
   );
 };
 
