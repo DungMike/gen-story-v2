@@ -71,7 +71,6 @@ export async function* generateStoryStream(formData: StoryFormData, template: St
       
       ${t('prompts.storyGeneration.beginWriting')} ${chapterTitle}:
     `;
-    console.log("🚀 ~ function*generateStoryStream ~ prompt:", prompt)
 
     try {
         const stream = await ai.models.generateContentStream({

@@ -9,7 +9,6 @@ if [ ! -f .env ]; then
     echo "⚠️  .env file not found. Please create one with your GEMINI_API_KEY"
     echo "Example:"
     echo "GEMINI_API_KEY=your_api_key_here"
-    echo "API_KEY=your_api_key_here"
     exit 1
 fi
 
