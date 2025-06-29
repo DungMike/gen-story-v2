@@ -4,6 +4,7 @@ import { getStylePrompt } from '../i18nConstants';
 import i18n from '../i18n';
 import { MODELS } from '@/constant/model-ai';
 
+console.log("🚀 ~ process.env.GEMINI_API_KEY:", process.env.GEMINI_API_KEY)
 if (!process.env.GEMINI_API_KEY) {
   throw new Error("API_KEY environment variable not set");
 }
